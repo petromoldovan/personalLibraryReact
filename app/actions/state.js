@@ -1,6 +1,8 @@
-export function testAction(){
+import constants from '../constants';
+
+export function authUserAction(data){
     return {
-        type: 'test',
-        payload: 'works'
+        type: constants.AUTH_USER,
+        payload: data
     }
 }

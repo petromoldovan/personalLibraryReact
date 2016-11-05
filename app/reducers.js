@@ -1,27 +1,34 @@
 import {fromJS, Map, List} from 'immutable';
 
+import constants from './constants';
+
 
 const intialState = fromJS({
-    initial: {}
+    data: {
+        user: {
+            isAuthenticated: false
+        },
+        books: {
+            selected: [],
+            all: []
+        }
+    }
 })
 
 
-function testState(state, action) {
-    return state.set(['data', 'test'], 'did not work');
+function setUserAuth(state, action) {
+    return state.setIn(['data', 'user', 'isAuthenticated'], fromJS(action.payload))
 }
 
 export function coreReducer(state=intialState, action) {
     let newState;
-    console.log(state)
-    console.log(action)
     switch (action.type) {
-        case 'test':
-            newState = testState(state, action)
+        case constants.AUTH_USER:
+            newState = setUserAuth(state, action)
             break;
         default:
             newState = state;
     }
-
     return newState;
 }
 
