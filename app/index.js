@@ -34040,6 +34040,10 @@
 	    AUTH_USER: 'AUTH_USER'
 	};
 
+	var users = exports.users = {
+	    admin: '1234'
+	};
+
 	exports.default = constants;
 
 /***/ },
@@ -34140,6 +34144,8 @@
 
 	var _reactRedux = __webpack_require__(228);
 
+	var _reactRouter = __webpack_require__(172);
+
 	var _LoginPage = __webpack_require__(269);
 
 	var _LoginPage2 = _interopRequireDefault(_LoginPage);
@@ -34155,7 +34161,6 @@
 	function mapDispatchToProps(dispatch) {
 	    return {
 	        onFormSubmit: function onFormSubmit(data) {
-	            console.log(data);
 	            dispatch((0, _state.authUserAction)(data));
 	        }
 	    };
@@ -34363,10 +34368,20 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function authUserAction(data) {
+
+	    var auth = true;
+	    if (!userVerified(data)) auth = false;
+
 	    return {
 	        type: _constants2.default.AUTH_USER,
-	        payload: data
+	        payload: auth
 	    };
+	}
+
+	function userVerified(data) {
+	    if (_constants.users[data.user] == data.password) return true;
+
+	    return;
 	}
 
 /***/ }
