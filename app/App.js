@@ -8,6 +8,7 @@ class App extends React.Component {
             <div className="AppComponent">
                 <Link to="/login">Login</Link>
                 {this.props.children}
+
             </div>
         )
     }
