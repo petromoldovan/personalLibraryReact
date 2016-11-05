@@ -1,3 +1,6 @@
-/**
- * Created by Petro on 05/11/2016.
- */
+const constants = {
+    AUTH_USER: 'AUTH_USER'
+}
+
+
+export default constants;
