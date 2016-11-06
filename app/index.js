@@ -34293,7 +34293,6 @@
 	                user = _state.user,
 	                password = _state.password;
 
-	            console.log((0, _validate3.default)({ user: user, password: password }, _Login2.default));
 	            return (0, _validate3.default)({ user: user, password: password }, _Login2.default);
 	        }
 	    }, {
