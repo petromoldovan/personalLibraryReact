@@ -1,4 +1,7 @@
 import React from 'react';
+import validate from 'validate.js'
+
+import VALIDATION_RULES from '../../validators/Login';
 
 class LoginForm extends React.Component {
     constructor(props){
@@ -6,11 +9,17 @@ class LoginForm extends React.Component {
 
         this.state = {
             user: '',
-            password: ''
+            password: '',
+            errors: {}
         }
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    validate () {
+        const {user, password} = this.state;
+        return validate({user, password}, VALIDATION_RULES)
     }
 
     onChange(e){
@@ -20,15 +29,34 @@ class LoginForm extends React.Component {
     onSubmit(e) {
         e.preventDefault();
 
-        const {onFormSubmit} = this.props
+        //return errors object if there are any
+        const errors = this.validate() || {};
+        this.setState({errors});
+        if (Object.keys(errors).length > 0) return;
 
+        const {onFormSubmit} = this.props
         if(onFormSubmit instanceof Function) onFormSubmit(this.state);
+    }
+
+    renderError(field) {
+        const messages = this.state.errors[field] || [];
+
+        if (messages.length === 0) return;
+
+        return messages.map((message, id) => {
+            return (
+                <span key={id} className="form-error">
+                    {message}
+                </span>
+            )
+        })
     }
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit} className="LoginForm">
                 <div className="form-group">
+                    {this.renderError('user')}
                     <label className="control-label" htmlFor="user">User</label>
                     <input type="text"
                            className="form-control"
@@ -38,6 +66,7 @@ class LoginForm extends React.Component {
                            value={this.state.user}/>
                 </div>
                 <div className="form-group">
+                    {this.renderError('password')}
                     <label className="control-label" htmlFor="password">Password</label>
                     <input type="password"
                            className="form-control"
