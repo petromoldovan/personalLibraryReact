@@ -31,3 +31,45 @@ describe('authUserAction', () => {
         })
     })
 })
+
+
+import coreReducer from '../app/reducers';
+import constants from '../app/constants';
+import {fromJS, Map, List} from 'immutable';
+
+describe('todos reducer', () => {
+    it('should return the initial state', () => {
+        expect(coreReducer(undefined, {})).to.deep.equal({
+            data: {
+                user: {
+                    isAuthenticated: false
+                },
+                books: {
+                    selected: [],
+                    all: []
+                }
+            }
+        })
+    })
+
+    it('should handle AUTH_USER', () => {
+        expect(
+            coreReducer([], {
+                type: constants.AUTH_USER,
+                payload: true
+            })
+        ).to.deep.equal(
+            {
+                data: {
+                    user: {
+                        isAuthenticated: true
+                    },
+                    books: {
+                        selected: [],
+                        all: []
+                    }
+                }
+            }
+        )
+    })
+})

@@ -3,7 +3,7 @@ import {fromJS, Map, List} from 'immutable';
 import constants from './constants';
 
 
-const intialState = fromJS({
+const intialState = {
     data: {
         user: {
             isAuthenticated: false
@@ -13,7 +13,7 @@ const intialState = fromJS({
             all: []
         }
     }
-})
+}
 
 
 function setUserAuth(state, action) {
