@@ -27,7 +27,7 @@ ReactDOM.render((
     <Provider store={store} >
         <Router history={browserHistory} >
             <Route path="/" component={AppCont} >
-                <Route path="/login" component={LoginCont} />
+                <IndexRoute component={LoginCont} />
             </Route>
         </Router>
     </Provider>
