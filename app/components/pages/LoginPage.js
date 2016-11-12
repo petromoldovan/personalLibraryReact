@@ -7,8 +7,8 @@ class LoginPage extends React.Component {
     render() {
         const {onFormSubmit} = this.props;
         return (
-            <div className="row">
-                <div className="col-md-4 col-md-offset-4">
+            <div className="LoginFormInner">
+                <div className="row">
                     <LoginForm onFormSubmit={onFormSubmit}/>
                 </div>
             </div>

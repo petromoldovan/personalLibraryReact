@@ -7,9 +7,9 @@ class App extends React.Component {
     render(){
         return (
             <div className={styles.AppComponent}>
-                <Link to="/login">Login</Link>
+                <Link to="/">Login</Link>
+                <Link to="/library">Library</Link>
                 {this.props.children}
-
             </div>
         )
     }
