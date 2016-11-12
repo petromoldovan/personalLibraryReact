@@ -18,3 +18,10 @@ function userVerified(data) {
 
     return;
 }
+
+export function setUserBooks(data) {
+    return {
+        type: constants.SET_USER_BOOKS,
+        payload: data
+    }
+}
