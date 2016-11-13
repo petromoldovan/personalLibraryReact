@@ -1,1 +1,22 @@
-[{"name": "some book", "year": "2010"}, {"name": "some book22", "year": "2013"}]
+[
+  {"title": "Don Quixote", "author": "Cervantes", "year": "1605"},
+  {"title": "The Picture of Dorian Gray", "author": "Oscar Wilde", "year": "1891"},
+  {"title": "Pride and Prejudice", "author": "Jane Austen", "year": "1813"},
+  {"title": "Les Misérables", "author": "Victor Hugo", "year": "1862"},
+  {"title": "Crime and Punishment", "author": "Fyodor Dostoyevsky", "year": "1866"},
+  {"title": "Anna Karenina", "author": "Leo Tolstoy", "year": "1877"},
+  {"title": "The Adventures of Tom Sawyer", "author": " Mark Twain", "year": "1876"},
+  {"title": "The Old Man and the Sea", "author": "Ernest Hemingway", "year": "1952"},
+  {"title": "Romeo and Juliet", "author": "William Shakespeare", "year": "1595"},
+  {"title": "The Alchemist", "author": "Paulo Coelho", "year": "1988"},
+  {"title": "The Idiot", "author": "Fyodor Dostoyevsky", "year": "1869"},
+  {"title": "The Brothers Karamazov", "author": "Fyodor Dostoyevsky", "year": "1880"},
+  {"title": "The Night in Lisbon", "author": "Erich Maria Remarque", "year": "1962"},
+  {"title": "Arch of Triumph", "author": "Erich Maria Remarque", "year": "1945"},
+  {"title": "Three Comrades", "author": "Erich Maria Remarque", "year": "1937"},
+  {"title": "Heaven Has No Favorites", "author": "Erich Maria Remarque", "year": "1961"},
+  {"title": "And Quite Flows the Don", "author": "Mikhail Sholokhov", "year": "1939"},
+  {"title": "The Man Who Laughs", "author": "Victor Hugo", "year": "1869"},
+  {"title": "Abandoned Woman", "author": "Honoré de Balzac", "year": "1832"},
+  {"title": "Gobseck", "author": "Honoré de Balzac", "year": "1830"}
+]

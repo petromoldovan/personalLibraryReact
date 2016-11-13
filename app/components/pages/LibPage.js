@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './LibPage.css';
+
 class LibPage extends React.Component {
     componentDidMount() {
         const {onLoadGetBooks} = this.props;
@@ -15,8 +17,8 @@ class LibPage extends React.Component {
             books.map((elem, id)=>{
                 return (
                     <li key={id} ref={`book-${id}`}>
-                        <h4>{elem.name}</h4>
-                        Year: <span>{elem.year}</span>
+                        <h4>{elem.title} ({elem.year})</h4>
+                        Author: <span>{elem.author}</span>
                     </li>
                 )
             })
@@ -28,13 +30,17 @@ class LibPage extends React.Component {
         console.log(this.props)
 
         return (
-            <div className="LibPage">
-                <ul>
+            <div className={styles.LibPage}>
+                <ol>
                     {this.renderBooks()}
-                </ul>
+                </ol>
             </div>
         )
     }
+}
+
+LibPage.propTypes = {
+    onLoadGetBooks: React.PropTypes.func.isRequired
 }
 
 export default LibPage;

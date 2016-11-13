@@ -21,7 +21,10 @@ var config = {
     ],
     module: {
         loaders: [
-            { test: /\.css$/, loader: "style-loader!css-loader" },
+            {
+                test: /\.css$/,
+                loader: "style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]"
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
