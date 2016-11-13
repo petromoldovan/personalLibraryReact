@@ -1,7 +1,10 @@
+const path = require('path');
+
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
-    entry: './app/main.js',
+    devtools: 'eval-source-map',
+    entry: path.join(__dirname,'/app/main.js'),
 
     output:  {
         path:'./app',
@@ -29,7 +32,6 @@ var config = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel',
-
                 query: {
                     presets: ['es2015', 'react']
                 }
