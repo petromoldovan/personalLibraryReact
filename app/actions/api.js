@@ -17,3 +17,16 @@ export function getUserBooks(opt={}){
     }
 
 }
+
+export function userLogin(data, opt={}){
+    return(dispatch)=>{
+        const api = new Api();
+        api.login(data)
+        .then((resp)=>{
+            console.log("user logged in")
+        })
+        .catch((err)=>{
+            console.log("smth went wrong")
+        })
+    }
+}

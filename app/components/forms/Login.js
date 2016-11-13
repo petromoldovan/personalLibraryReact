@@ -34,8 +34,13 @@ class LoginForm extends React.Component {
         this.setState({errors});
         if (Object.keys(errors).length > 0) return;
 
+        let data = {
+            user: this.state.user,
+            password: this.state.password
+        }
+
         const {onFormSubmit} = this.props
-        if(onFormSubmit instanceof Function) onFormSubmit(this.state);
+        if(onFormSubmit instanceof Function) onFormSubmit({data});
     }
 
     renderError(field) {

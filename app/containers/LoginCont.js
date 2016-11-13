@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
 
 import LoginPage from '../components/pages/LoginPage';
-import {authUserAction} from '../actions/state'
+import {userLogin} from '../actions/api'
 
 function mapStateToProps() {
     return {};
@@ -11,7 +11,7 @@ function mapStateToProps() {
 function mapDispatchToProps(dispatch) {
     return {
         onFormSubmit: (data) => {
-            dispatch(authUserAction(data))
+            dispatch(userLogin(data))
         }
     };
 }

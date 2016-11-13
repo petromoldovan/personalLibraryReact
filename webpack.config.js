@@ -1,13 +1,22 @@
 import path from 'path';
+import webpack from 'webpack';
 
 
 export default {
     devtools: 'eval-source-map',
-    entry: path.join(__dirname,'/app/main.js'),
-
-    output:  {
-        path:'/app'
+    entry: [
+        'webpack-hot-middleware/client',
+        path.join(__dirname,'/app/main.js')
+    ],
+    output: {
+        path: '/',
+        publicPath: '/'
     },
+    plugins: [
+        new webpack.NoErrorsPlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin()
+    ],
     module: {
         loaders: [
             {
@@ -17,7 +26,7 @@ export default {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel'
+                loaders: ['babel-loader']
             }
         ]
     },

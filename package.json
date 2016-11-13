@@ -35,7 +35,9 @@
     "mocha": "^3.1.2",
     "mocha-webpack": "^0.7.0",
     "nodemon": "^1.11.0",
+    "react-hot-loader": "^3.0.0-beta.6",
     "webpack": "^1.13.3",
-    "webpack-dev-middleware": "^1.8.4"
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.2"
   }
 }

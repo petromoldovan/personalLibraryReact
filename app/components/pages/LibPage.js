@@ -10,7 +10,6 @@ class LibPage extends React.Component {
 
     renderBooks() {
         const {books} = this.props;
-
         if (!books) return null
 
         return (
@@ -27,10 +26,10 @@ class LibPage extends React.Component {
 
     render() {
         const {books} = this.props;
-        console.log(this.props)
 
         return (
             <div className="LibPage">
+                <h1>List of books</h1>
                 <ol>
                     {this.renderBooks()}
                 </ol>
