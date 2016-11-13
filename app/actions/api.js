@@ -24,6 +24,7 @@ export function userLogin(data, opt={}){
         api.login(data)
         .then((resp)=>{
             console.log("user logged in")
+            if(opt.then && opt.then instanceof Function) {opt.then()}
         })
         .catch((err)=>{
             console.log("smth went wrong")

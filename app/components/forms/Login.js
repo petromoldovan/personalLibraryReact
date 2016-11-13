@@ -1,5 +1,6 @@
 import React from 'react';
-import validate from 'validate.js'
+import validate from 'validate.js';
+import {browserHistory} from 'react-router';
 
 import VALIDATION_RULES from '../../validators/Login';
 
@@ -10,7 +11,8 @@ class LoginForm extends React.Component {
         this.state = {
             user: '',
             password: '',
-            errors: {}
+            errors: {},
+            isLoading: false
         }
 
         this.onChange = this.onChange.bind(this);
@@ -31,8 +33,9 @@ class LoginForm extends React.Component {
 
         //return errors object if there are any
         const errors = this.validate() || {};
-        this.setState({errors});
+
         if (Object.keys(errors).length > 0) return;
+        this.setState({errors, isLoading: true});
 
         let data = {
             user: this.state.user,
@@ -40,7 +43,8 @@ class LoginForm extends React.Component {
         }
 
         const {onFormSubmit} = this.props
-        if(onFormSubmit instanceof Function) onFormSubmit({data});
+        if(onFormSubmit instanceof Function) onFormSubmit({data})
+        this.setState({isLoading: false})
     }
 
     renderError(field) {
@@ -81,7 +85,7 @@ class LoginForm extends React.Component {
                            value={this.state.password}/>
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-primary btn-lg">
+                    <button className="btn btn-primary btn-lg" disabled={this.state.isLoading}>
                         Submit
                     </button>
                 </div>
