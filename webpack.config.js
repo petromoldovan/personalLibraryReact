@@ -1,27 +1,13 @@
-const path = require('path');
+import path from 'path';
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var config = {
+export default {
     devtools: 'eval-source-map',
     entry: path.join(__dirname,'/app/main.js'),
 
     output:  {
-        path:'./app',
-        filename: 'index.js'
+        path:'/app'
     },
-
-    devServer: {
-        inline: true,
-        port: 3000
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            hash: true,
-            filename: 'index.html',
-            template: 'app/index.tpl.html',
-        })
-    ],
     module: {
         loaders: [
             {
@@ -31,13 +17,11 @@ var config = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel',
-                query: {
-                    presets: ['es2015', 'react']
-                }
+                loader: 'babel'
             }
         ]
+    },
+    resolve: {
+        extensions: ['', '.js']
     }
 }
-
-module.exports = config;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-import styles from './Header.css';
+/*import styles from './Header.css';*/
 
 
 class Header extends React.Component {

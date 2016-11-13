@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './LibPage.css';
+/*import styles from './LibPage.css';*/
 
 class LibPage extends React.Component {
     componentDidMount() {
@@ -30,7 +30,7 @@ class LibPage extends React.Component {
         console.log(this.props)
 
         return (
-            <div className={styles.LibPage}>
+            <div className="LibPage">
                 <ol>
                     {this.renderBooks()}
                 </ol>

@@ -22,8 +22,6 @@ const store = createStore(
     applyMiddleware(thunk, logger)
 );
 
-/*store.dispatch(authUserAction())*/
-
 ReactDOM.render((
     <Provider store={store} >
         <Router history={browserHistory} >
