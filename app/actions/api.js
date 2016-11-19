@@ -1,6 +1,7 @@
 import constants from '../constants';
 import Api from '../lib/api';
 import {browserHistory} from 'react-router';
+import jwt from 'jsonwebtoken'
 
 import {setUserBooks} from './state';
 
@@ -24,7 +25,13 @@ export function userLogin(data, opt={}){
         const api = new Api();
         api.login(data)
         .then((resp)=>{
-            if (resp.token){
+            const token = resp.token;
+            localStorage.setItem('jwtToken', token)
+
+            //this is user
+            console.log(jwt.decode(token))
+
+            if (token){
                 browserHistory.push('library')
             }
         })

@@ -32,6 +32,10 @@ var config = {
     },
     resolve: {
         extensions: ['', '.js']
+    },
+    node: {
+        net: 'empty',
+        dns: 'empty'
     }
 }
 

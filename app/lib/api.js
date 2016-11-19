@@ -25,6 +25,10 @@ class Api {
                 request.type('json').send(data);
             }
 
+            if(localStorage.getItem('jwtToken')) {
+                request.set('Authorization', `Bearer ${localStorage.getItem('jwtToken')}`)
+            }
+
             request
                 .then(response => resolve(response.body))
                 .catch(reject)
