@@ -1,8 +1,8 @@
-import path from 'path';
-import webpack from 'webpack';
+var path = require('path');
+var webpack = require('webpack');
 
 
-export default {
+var config = {
     devtools: 'eval-source-map',
     entry: [
         'webpack-hot-middleware/client',
@@ -34,3 +34,5 @@ export default {
         extensions: ['', '.js']
     }
 }
+
+module.exports = config;

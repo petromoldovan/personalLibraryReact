@@ -1,6 +1,5 @@
 import React from 'react';
 import validate from 'validate.js';
-import {browserHistory} from 'react-router';
 
 import VALIDATION_RULES from '../../validators/Login';
 

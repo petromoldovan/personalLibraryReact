@@ -11,8 +11,7 @@ function mapStateToProps() {
 function mapDispatchToProps(dispatch) {
     return {
         onFormSubmit: (data) => {
-            const then = browserHistory.push('library')
-            dispatch(userLogin(data), {then})
+            dispatch(userLogin(data))
         }
     };
 }

@@ -1,34 +1,35 @@
 import express from 'express';
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import config from '../config';
+
+import User from '../models/user';
+
 
 let router = express.Router();
 
-function validateInput(data) {
-    let errors = {};
-
-    //set validation rules here
-    /*if(Validator.isEmail(data.user)){
-        errors.user = "Field is required"
-    }
-    if(isEmpty(data.password)){
-        errors.password = "Field is required"
-    }*/
-
-    return {
-        errors,
-        isValid: isEmpty(errors)
-    }
-}
-
 router.post('/', (req, res)=>{
-    const {errors, isValid} = validateInput(req.body)
+    const {user, password} = req.body;
 
-    if(isValid) {
-        res.status(200).json({success: "yeaaaah"})
-    } else {
-        res.status(400).json(errors)
-    }
+    User.query({
+        where: {user: user}
+    }).fetch().then(user => {
+        if(user){
+            if(bcrypt.compareSync(password, user.get('password_digest'))) {
+                const token = jwt.sign({
+                    id: user.get('id'),
+                    username: user.get('user')
+                }, config.jwtSecret);
+                res.status(200).json({ token })
+            } else {
+                res.status(401).json({error: 'user was not found'})
+            }
+        } else {
+            res.status(401).json({error: 'user was not found'})
+        }
+    })
 })
 
 export default router;

@@ -13,7 +13,7 @@ function mapStateToProps(state){
 function mapDispatchtoProps(dispatch) {
     return {
         onLoadGetBooks: () => {
-            dispatch(getUserBooks({then: ()=>{console.log("damn works!!!")}}))
+            dispatch(getUserBooks({then: ()=>{console.log("loading books..")}}))
         }
     }
 }
