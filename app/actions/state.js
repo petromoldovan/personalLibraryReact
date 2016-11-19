@@ -1,10 +1,10 @@
 import constants from '../constants';
 
 
-export function authUserAction(bool){
+export function authUserAction(){
     return {
         type: constants.AUTH_USER,
-        payload: bool
+        payload: true
     }
 }
 

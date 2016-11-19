@@ -5,12 +5,13 @@ import {Provider} from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
+import jwt from 'jsonwebtoken';
 
 import coreReducer from './reducers'
 import AppCont from './containers/AppCont';
 import LoginCont from './containers/LoginCont';
 import LibCont from './containers/LibCont';
-import {authUserAction} from './actions/state';
+import {authUserAction, setUserDetails} from './actions/state';
 
 
 const logger = createLogger({
@@ -21,6 +22,11 @@ const store = createStore(
     coreReducer,
     applyMiddleware(thunk, logger)
 );
+
+if(localStorage.jwtToken) {
+    store.dispatch(authUserAction())
+    store.dispatch(setUserDetails(jwt.decode(localStorage.jwtToken)))
+}
 
 ReactDOM.render((
     <Provider store={store} >

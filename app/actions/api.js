@@ -30,7 +30,7 @@ export function userLogin(data, opt={}){
                 localStorage.setItem('jwtToken', token)
                 const user = jwt.decode(token)
 
-                dispatch(authUserAction(true))
+                dispatch(authUserAction())
                 dispatch(setUserDetails(user))
                 browserHistory.push('library')
             }
