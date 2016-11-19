@@ -6,7 +6,8 @@ import constants from './constants';
 const intialState = fromJS({
     data: {
         user: {
-            isAuthenticated: false
+            isAuthenticated: false,
+            details: {}
         },
         books: {
             selected: [],
@@ -20,7 +21,11 @@ function setUserAuth(state, action) {
     return state.setIn(['data', 'user', 'isAuthenticated'], fromJS(action.payload))
 }
 
-function setUsetBooks(state, action) {
+function setUserDetails(state, action) {
+    return state.setIn(['data', 'user', 'details'], fromJS(action.payload))
+}
+
+function setUserBooks(state, action) {
     return state.setIn(['data', 'books', 'all'], fromJS(action.payload))
 }
 
@@ -30,8 +35,11 @@ export function coreReducer(state=intialState, action) {
         case constants.AUTH_USER:
             newState = setUserAuth(state, action)
             break;
+        case constants.SET_USER_DETAILS:
+            newState = setUserDetails(state, action)
+            break;
         case constants.SET_USER_BOOKS:
-            newState = setUsetBooks(state, action)
+            newState = setUserBooks(state, action)
             break;
         default:
             newState = state;

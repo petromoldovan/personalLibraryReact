@@ -3,7 +3,7 @@ import Api from '../lib/api';
 import {browserHistory} from 'react-router';
 import jwt from 'jsonwebtoken'
 
-import {setUserBooks} from './state';
+import {authUserAction, setUserDetails, setUserBooks} from './state';
 
 export function getUserBooks(opt={}){
     return (dispatch) => {
@@ -26,12 +26,12 @@ export function userLogin(data, opt={}){
         api.login(data)
         .then((resp)=>{
             const token = resp.token;
-            localStorage.setItem('jwtToken', token)
-
-            //this is user
-            console.log(jwt.decode(token))
-
             if (token){
+                localStorage.setItem('jwtToken', token)
+                const user = jwt.decode(token)
+
+                dispatch(authUserAction(true))
+                dispatch(setUserDetails(user))
                 browserHistory.push('library')
             }
         })
