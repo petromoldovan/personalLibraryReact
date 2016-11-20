@@ -12,11 +12,18 @@ class LibPage extends React.Component {
 
     renderBooks() {
         const {books} = this.props;
-        if (!books) return null
+        if (!books) return null;
+        let bookArr = [];
+
+        Object.keys(books).forEach((key)=>{
+            return(
+                bookArr.push(books[key])
+            )
+        });
 
         return (
-            books.map((elem, id)=>{
-                return (
+            bookArr.map((elem, id)=>{
+                return(
                     <li key={id} ref={`book-${id}`}>
                         <h4>{elem.title} ({elem.year})</h4>
                         Author: <span>{elem.author}</span>

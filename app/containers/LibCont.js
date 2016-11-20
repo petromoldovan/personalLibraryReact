@@ -4,7 +4,7 @@ import LibPage from '../components/pages/LibPage';
 import {getUserBooks, addNewBook} from '../actions/api';
 
 function mapStateToProps(state){
-    let books = state.getIn(['data', 'books', 'all'], null)
+    let books = state.getIn(['data', 'books', 'all', 'books'], null)
     books = books ? books.toJS() : null;
 
     return{books}
