@@ -8,6 +8,7 @@ import webpackConfig from '../webpack.config';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import users from './routes/users';
+import books from './routes/books'
 
 let app = express();
 
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 
 //define route
 app.use('/api/users', users);
+app.use('/api/books', books);
 
 const compiler = webpack(webpackConfig);
 

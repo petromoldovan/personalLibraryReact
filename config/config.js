@@ -1,7 +1,7 @@
 export default {
     app: {
         url:{
-            books: '/assets/books.json',
+            books: '/api/books',
             users: '/api/users'
             }
         }
