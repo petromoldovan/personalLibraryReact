@@ -1,4 +1,4 @@
-import {fromJS, Map, List} from 'immutable';
+import {fromJS, Map, List, Set} from 'immutable';
 
 import constants from './constants';
 
@@ -29,6 +29,16 @@ function setUserBooks(state, action) {
     return state.setIn(['data', 'books', 'all'], fromJS(action.payload))
 }
 
+function appendBookToList(state, action) {
+    return state.updateIn(['data', 'books', 'all', 'books'], (books)=>{
+        let data = [];
+        let newBook = action.payload;
+        if (books) data = books.toJS();
+
+        return Set(data).concat(newBook)
+    })
+}
+
 export function coreReducer(state=intialState, action) {
     let newState;
     switch (action.type) {
@@ -40,6 +50,9 @@ export function coreReducer(state=intialState, action) {
             break;
         case constants.SET_USER_BOOKS:
             newState = setUserBooks(state, action)
+            break;
+        case constants.APPEND_BOOK_TO_LIST:
+            newState = appendBookToList(state, action)
             break;
         default:
             newState = state;

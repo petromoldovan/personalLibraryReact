@@ -21,3 +21,10 @@ export function setUserBooks(data) {
         payload: data
     }
 }
+
+export function appendBookToList(data) {
+    return {
+        type: constants.APPEND_BOOK_TO_LIST,
+        payload: data
+    }
+}

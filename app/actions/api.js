@@ -3,7 +3,12 @@ import Api from '../lib/api';
 import {browserHistory} from 'react-router';
 import jwt from 'jsonwebtoken'
 
-import {authUserAction, setUserDetails, setUserBooks} from './state';
+import {
+    authUserAction,
+    setUserDetails,
+    setUserBooks,
+    appendBookToList
+} from './state';
 
 export function getUserBooks(opt={}){
     return (dispatch) => {
@@ -29,7 +34,6 @@ export function userLogin(data, opt={}){
             if (token){
                 localStorage.setItem('jwtToken', token)
                 const user = jwt.decode(token)
-
                 dispatch(authUserAction())
                 dispatch(setUserDetails(user))
                 browserHistory.push('library')
@@ -46,6 +50,7 @@ export function addNewBook(data) {
         const api = new Api();
         api.addNewBook(data)
         .then((resp)=>{
+            dispatch(appendBookToList(data.data))
                 console.log("got the book")
         })
         .catch((err)=>{
