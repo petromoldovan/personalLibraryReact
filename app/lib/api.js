@@ -12,6 +12,10 @@ class Api {
 		return this.request('get', this.url.books)
 	}
 
+    addNewBook(data) {
+        return this.request('post', this.url.books, data)
+    }
+
     login(data={}) {
         return this.request('post', this.url.users, data)
     }

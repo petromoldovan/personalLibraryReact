@@ -1,5 +1,7 @@
 import React from 'react';
 
+import LibForm from '../forms/Lib';
+
 /*import styles from './LibPage.css';*/
 
 class LibPage extends React.Component {
@@ -25,14 +27,25 @@ class LibPage extends React.Component {
     }
 
     render() {
-        const {books} = this.props;
+        const {books, onSubmit} = this.props;
 
         return (
             <div className="LibPage">
-                <h1>List of books</h1>
-                <ol>
-                    {this.renderBooks()}
-                </ol>
+                <div className="row">
+                    <div className="col-sm-6 col-sm-offset-3">
+                        <h2>Add new book</h2>
+                        <LibForm onSubmit={onSubmit}/>
+                    </div>
+                </div>
+
+                <div className="booksList">
+                    <h2>List of books</h2>
+                    <ol>
+                        {this.renderBooks()}
+                    </ol>
+                </div>
+
+
             </div>
         )
     }

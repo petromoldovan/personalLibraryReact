@@ -40,3 +40,16 @@ export function userLogin(data, opt={}){
         })
     }
 }
+
+export function addNewBook(data) {
+    return (dispatch) => {
+        const api = new Api();
+        api.addNewBook(data)
+        .then((resp)=>{
+                console.log("got the book")
+        })
+        .catch((err)=>{
+            console.log(`Error occurred ${err}`)
+        })
+    }
+}
