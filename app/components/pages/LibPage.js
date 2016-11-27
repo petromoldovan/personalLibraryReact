@@ -1,17 +1,24 @@
 import React from 'react';
 
 import LibForm from '../forms/Lib';
+import classnames from 'classnames';
 
 /*import styles from './LibPage.css';*/
 
 class LibPage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.onClick=this.onClick.bind(this);
+    }
+
     componentDidMount() {
         const {onLoadGetBooks} = this.props;
         if (onLoadGetBooks instanceof Function) onLoadGetBooks();
     }
 
     renderBooks() {
-        const {books} = this.props;
+        const {books, selectedBooks} = this.props;
         if (!books) return null;
         let bookArr = [];
 
@@ -23,14 +30,26 @@ class LibPage extends React.Component {
 
         return (
             bookArr.map((elem, id)=>{
+                let classNames = classnames('listItem', {selected: selectedBooks.indexOf(elem.id)>=0})
                 return(
-                    <li key={id} ref={`book-${id}`}>
+                    <li key={id} ref={`book-${id}`} className={classNames} onClick={() => this.onClick(elem.id)}>
                         <h4>{elem.title} ({elem.year})</h4>
                         Author: <span>{elem.author}</span>
                     </li>
                 )
             })
         )
+    }
+
+    onClick(id) {
+        let { selectedBooks, toggleSelectedBook } = this.props;
+
+        if (id && selectedBooks.indexOf(id) >= 0) return null;
+
+        let newSelected = selectedBooks;
+        newSelected.push(id);
+
+        if (toggleSelectedBook && toggleSelectedBook instanceof Function) toggleSelectedBook(newSelected);
     }
 
     render() {

@@ -28,3 +28,10 @@ export function appendBookToList(data) {
         payload: data
     }
 }
+
+export function toggleSelectedBook(id) {
+    return {
+        type: constants.TOGGLE_SELECTED_BOOK,
+        payload: id
+    }
+}

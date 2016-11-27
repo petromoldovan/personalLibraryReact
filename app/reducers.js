@@ -14,7 +14,7 @@ const intialState = fromJS({
             all: []
         }
     }
-})
+});
 
 
 function setUserAuth(state, action) {
@@ -39,6 +39,10 @@ function appendBookToList(state, action) {
     })
 }
 
+function toggleSelectedBook(state, action) {
+    return state.setIn(['data', 'books', 'selected'], fromJS(action.payload))
+}
+
 export function coreReducer(state=intialState, action) {
     let newState;
     switch (action.type) {
@@ -53,6 +57,9 @@ export function coreReducer(state=intialState, action) {
             break;
         case constants.APPEND_BOOK_TO_LIST:
             newState = appendBookToList(state, action)
+            break;
+        case constants.TOGGLE_SELECTED_BOOK:
+            newState = toggleSelectedBook(state, action)
             break;
         default:
             newState = state;

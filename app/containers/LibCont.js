@@ -2,12 +2,17 @@ import {connect} from 'react-redux';
 
 import LibPage from '../components/pages/LibPage';
 import {getUserBooks, addNewBook} from '../actions/api';
+import {toggleSelectedBook} from '../actions/state';
+
 
 function mapStateToProps(state){
-    let books = state.getIn(['data', 'books', 'all', 'books'], null)
-    books = books ? books.toJS() : null;
+    let books = state.getIn(['data', 'books', 'all', 'books'], null);
+    let selectedBooks = state.getIn(['data', 'books', 'selected'], null);
 
-    return{books}
+    books = books ? books.toJS() : null;
+    selectedBooks = selectedBooks ? selectedBooks.toJS() : [];
+
+    return{books, selectedBooks}
 }
 
 function mapDispatchtoProps(dispatch) {
@@ -17,6 +22,9 @@ function mapDispatchtoProps(dispatch) {
         },
         onSubmit: (data) => {
             dispatch(addNewBook(data))
+        },
+        toggleSelectedBook: (id) => {
+            dispatch(toggleSelectedBook(id))
         }
     }
 }
