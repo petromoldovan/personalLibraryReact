@@ -35,3 +35,10 @@ export function toggleSelectedBook(id) {
         payload: id
     }
 }
+
+export function setLocation(pathname=null) {
+    return {
+        type: constants.SET_LOCATION,
+        payload: pathname
+    }
+}

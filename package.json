@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --history-api-fallback",
-    "test": "mocha --recursive --compilers js:babel-core/register -w",
-    "server": "nodemon --watch server --exec babel-node -- server/index.js"
+    "start": "nodemon --watch server --exec babel-node -- server/index.js",
+    "test": "mocha --recursive --compilers js:babel-core/register -w"
   },
   "keywords": [],
   "author": "",

@@ -7,7 +7,8 @@ import {
     authUserAction,
     setUserDetails,
     setUserBooks,
-    appendBookToList
+    appendBookToList,
+    setLocation
 } from './state';
 
 export function getUserBooks(opt={}){
@@ -32,11 +33,12 @@ export function userLogin(data, opt={}){
         .then((resp)=>{
             const token = resp.token;
             if (token){
-                localStorage.setItem('jwtToken', token)
-                const user = jwt.decode(token)
-                dispatch(authUserAction())
-                dispatch(setUserDetails(user))
-                browserHistory.push('library')
+                localStorage.setItem('jwtToken', token);
+                const user = jwt.decode(token);
+                dispatch(authUserAction());
+                dispatch(setUserDetails(user));
+                dispatch(setLocation('library'));
+                browserHistory.push('library');
             }
         })
         .catch((err)=>{

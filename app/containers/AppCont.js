@@ -2,12 +2,15 @@ import {connect} from 'react-redux';
 
 import App from '../App';
 
-function mapStateToProps() {
-    return {};
+
+function mapStateToProps(state) {
+    const location = state.getIn(['ui', 'location'], null);
+
+    return {location};
 }
 
 function mapDispatchToProps() {
-    return {};
+    return {}
 }
 
 const AppCont = connect(

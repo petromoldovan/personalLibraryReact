@@ -43,6 +43,10 @@ function toggleSelectedBook(state, action) {
     return state.setIn(['data', 'books', 'selected'], fromJS(action.payload))
 }
 
+function setLocation(state, action) {
+    return state.setIn(['ui', 'location'], fromJS(action.payload))
+}
+
 export function coreReducer(state=intialState, action) {
     let newState;
     switch (action.type) {
@@ -60,6 +64,9 @@ export function coreReducer(state=intialState, action) {
             break;
         case constants.TOGGLE_SELECTED_BOOK:
             newState = toggleSelectedBook(state, action)
+            break;
+        case constants.SET_LOCATION:
+            newState = setLocation(state, action)
             break;
         default:
             newState = state;

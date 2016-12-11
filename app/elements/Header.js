@@ -5,12 +5,26 @@ import {Link} from 'react-router';
 
 
 class Header extends React.Component {
+    renderContent() {
+        const {location} = this.props;
+        let content;
+
+        if (location==='library') {
+            content = (
+                <nav>
+                    <Link to="/">Home</Link>
+                    <Link to="/library">Library</Link>
+                </nav>
+            )
+        }
+        return content;
+    }
+
     render(){
         return(
-            <nav>
-                <Link to="/">Home</Link>
-                <Link to="/library">Library</Link>
-            </nav>
+            <div>
+                {this.renderContent()}
+            </div>
         )
     }
 }

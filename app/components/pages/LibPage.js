@@ -12,6 +12,14 @@ class LibPage extends React.Component {
         this.onClick=this.onClick.bind(this);
     }
 
+    componentWillUnmount() {
+        const {onUnmountSetLocation} = this.props;
+
+        console.log("comes 2")
+
+        if(onUnmountSetLocation && onUnmountSetLocation instanceof Function) onUnmountSetLocation();
+    }
+
     componentDidMount() {
         const {onLoadGetBooks} = this.props;
         if (onLoadGetBooks instanceof Function) onLoadGetBooks();

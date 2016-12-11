@@ -5,9 +5,11 @@ import Header from './elements/Header';
 
 class App extends React.Component {
     render(){
+        const {location} = this.props;
+
         return (
             <div className="AppComponent">
-                <Header />
+                <Header location={location}/>
                 {this.props.children}
             </div>
         )

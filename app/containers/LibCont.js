@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 
 import LibPage from '../components/pages/LibPage';
 import {getUserBooks, addNewBook} from '../actions/api';
-import {toggleSelectedBook} from '../actions/state';
+import {toggleSelectedBook, setLocation} from '../actions/state';
 
 
 function mapStateToProps(state){
@@ -25,6 +25,9 @@ function mapDispatchtoProps(dispatch) {
         },
         toggleSelectedBook: (id) => {
             dispatch(toggleSelectedBook(id))
+        },
+        onUnmountSetLocation: () => {
+            dispatch(setLocation())
         }
     }
 }
