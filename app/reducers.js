@@ -40,6 +40,11 @@ function appendBookToList(state, action) {
 }
 
 function toggleSelectedBook(state, action) {
+    let selectedBooks = state.getIn(['data', 'books', 'selected'], []);
+    if (selectedBooks && selectedBooks.indexOf(action.payload) > - 1) return;
+
+    selectedBooks.push(action.payload);
+
     return state.setIn(['data', 'books', 'selected'], fromJS(action.payload))
 }
 

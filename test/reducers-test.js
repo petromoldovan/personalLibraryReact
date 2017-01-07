@@ -1,4 +1,4 @@
-var expect = require('chai').expect;
+const expect = require('chai').expect;
 
 import coreReducer from '../app/reducers';
 import constants from '../app/constants';
@@ -21,12 +21,12 @@ describe('todos reducer', () => {
     })
 
     it('should handle AUTH_USER', () => {
-        expect(
-            coreReducer(fromJS([]), {
-                type: constants.AUTH_USER,
-                payload: true
-            })
-        ).to.deep.equal(fromJS(
+        let expected = coreReducer(fromJS({}), {
+            type: constants.AUTH_USER,
+            payload: true
+        });
+
+        expect(expected.toJS()).to.deep.equal(
             {
                 data: {
                     user: {
@@ -34,6 +34,42 @@ describe('todos reducer', () => {
                     }
                 }
             }
-        ))
+        )
     })
-})
+
+    it('should set data.user.isAuthentificated to false', () => {
+        let expected = coreReducer(fromJS({}), {
+            type: constants.AUTH_USER,
+            payload: false
+        });
+
+        expect(expected.toJS()).to.deep.equal(
+            {
+                data: {
+                    user: {
+                        isAuthenticated: false
+                    }
+                }
+            }
+        )
+    })
+
+    it('should handle TOGGLE_SELECTED_BOOK action', () => {
+        const bookID = 13;
+
+        let expected = coreReducer(fromJS({}), {
+            type: constants.TOGGLE_SELECTED_BOOK,
+            payload: bookID
+        });
+
+        expect(expected.toJS()).to.deep.equal(
+            {
+                data: {
+                    books: {
+                        selected: bookID
+                    }
+                }
+            }
+        )
+    })
+});
