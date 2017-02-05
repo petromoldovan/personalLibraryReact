@@ -30,11 +30,11 @@ const books = [
 ];
 
 describe('Library page', () => {
-    let getUserBooks, page, mountPoint;
+    let getUserBooks, page, mountPoint, props;
 
     beforeEach(() => {
         mountPoint = getOrCreateMountPoint();
-        const props = {
+        props = {
             books: books,
             selectedBooks: [1,2,3],
             onLoadGetBooks: getUserBooks = sinon.stub()
@@ -56,7 +56,16 @@ describe('Library page', () => {
 
     it('is a React component', () => {
         expect(page).to.be.instanceof(React.Component)
+    });
+
+    context("renders all companies", ()=>{
+        it("checks if all books are rendered", ()=>{
+            props.books.forEach((book) => {
+                let bookRef = `book_${book.id}`;
+                expect(page.refs[bookRef]).to.be.exist;
+                expect(page.refs[bookRef].tagName).to.equal('LI');
+            });
+        })
     })
 
-    
 })

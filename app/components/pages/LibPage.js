@@ -37,9 +37,9 @@ class LibPage extends React.Component {
             bookArr.map((elem, id)=>{
                 let classNames = classnames('listItem', {selected: selectedBooks.indexOf(elem.id)>=0})
                 return(
-                    <li key={id} ref={`book-${id}`} className={classNames} onClick={() => this.onClick(elem.id)}>
-                        <h4>{elem.title} ({elem.year})</h4>
-                        Author: <span>{elem.author}</span>
+                    <li key={id} ref={`book_${elem.id}`} className={classNames} onClick={() => this.onClick(elem.id)}>
+                        <h4><span ref="title">{elem.title}</span> ({elem.year})</h4>
+                        Author: <span ref="author">{elem.author}</span>
                     </li>
                 )
             })
