@@ -14,9 +14,6 @@ class LibPage extends React.Component {
 
     componentWillUnmount() {
         const {onUnmountSetLocation} = this.props;
-
-        console.log("comes 2")
-
         if(onUnmountSetLocation && onUnmountSetLocation instanceof Function) onUnmountSetLocation();
     }
 

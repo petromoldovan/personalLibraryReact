@@ -32,4 +32,4 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../app/index.html'))
 });
 
-app.listen(3000, ()=>console.log("running local 3001"))
+app.listen(3000, ()=>console.log("running local 3000"))
